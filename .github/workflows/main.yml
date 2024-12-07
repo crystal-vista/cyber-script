@@ -23,4 +23,4 @@ jobs:
           pip install jupyter nbconvert
 
       - name: Run the notebook
-        run: jupyter nbconvert --to notebook --execute --inplace serena.ipynb
+        run: jupyter nbconvert --to notebook --execute --stdout serena.ipynb
