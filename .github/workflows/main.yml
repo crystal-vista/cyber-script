@@ -1,0 +1,26 @@
+name: Run Jupyter Notebook
+
+on: 
+  push:
+    branches:
+      - master 
+      
+jobs:
+  run_notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          pip install jupyter nbconvert
+
+      - name: Run the notebook
+        run: jupyter nbconvert --to notebook --execute --inplace serena.ipynb
